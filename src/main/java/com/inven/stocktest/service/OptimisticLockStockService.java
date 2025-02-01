@@ -14,8 +14,9 @@ public class OptimisticLockStockService {
         this.stockRepository = stockRepository;
     }
 
+
     @Transactional
-    public synchronized void decrease(Long id, Long quantity){
+    public void decrease(Long id, Long quantity){
         // 재고 조회
         Stock stock = stockRepository.findByIdWithOptimisticLock(id);
         // 재고 감소
